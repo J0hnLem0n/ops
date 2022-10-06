@@ -1,5 +1,7 @@
 .container {
   padding: 0 2rem;
+  display: flex;
+  gap: 200px;
 }
 
 .main {

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import CodeIcon from '@material-ui/icons/Code';
+import {Code, PlaylistAddCheck, CloudUpload, Wc,Info } from '@mui/icons-material';
 // import CheckIcon from '@material-ui/icons/PlaylistAddCheck';
 // import DeployIcon from '@material-ui/icons/CloudUpload';
 // import CommitIcon from '@material-ui/icons/Wc';
@@ -14,20 +14,20 @@ export class MainRoundMenu extends Component {
             menuItemClassActiveId: 0
         };
     }
-    // getIcon = (icon) => {
-    //     switch (icon) {
-    //         case 'Code':
-    //             return <CodeIcon />;
-    //         case 'Check':
-    //             return <CheckIcon />;
-    //         case 'Deploy':
-    //             return <DeployIcon />;
-    //         case 'Commit':
-    //             return <CommitIcon />;
-    //         default:
-    //             return <InfoIcon />;
-    //     }
-    // };
+    getIcon = (icon) => {
+        switch (icon) {
+            case 'Code':
+                return <Code />;
+            case 'Check':
+                return <PlaylistAddCheck />;
+            case 'Deploy':
+                return <CloudUpload />;
+            case 'Commit':
+                return <Wc />;
+            default:
+                return <Info />;
+        }
+    };
     toggleMenuItemClass() {
         const currentState = this.state.toggleMenuItemClassActive;
         this.setState({ toggleMenuItemClassActive: !currentState });
@@ -35,7 +35,8 @@ export class MainRoundMenu extends Component {
     getMenuItems() {
         const { size, iconSize, menuItems, setPage } = this.props;
         const { menuItemClassActiveId } = this.state;
-        const total = menuItems.length;
+        if(!menuItems) return []
+        const total = menuItems?.length;
         const alpha = Math.PI * 2 / total;
         /**Радиус и смещение*/
         const radius = (size - iconSize) / 2;
@@ -61,7 +62,7 @@ export class MainRoundMenu extends Component {
                          this.setState({transform: degree, menuItemClassActiveId: index})
                      }}
                 >
-                    <p>{item.title}</p>
+                    {this.getIcon(item.icon)}<p>{item.title}</p>
                 </div>
             )
         });
@@ -70,6 +71,7 @@ export class MainRoundMenu extends Component {
     render() {
         const { size } = this.props;
         const mainMenuStyle = {
+            'min-width': size+'px',
             width: size+'px',
             height: size+'px'
         };
@@ -91,3 +93,4 @@ export class MainRoundMenu extends Component {
         );
     }
 }
+export default MainRoundMenu
