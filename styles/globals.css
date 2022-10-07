@@ -15,6 +15,10 @@ a {
 * {
   box-sizing: border-box;
 }
+#__next {
+    width: 100%;
+    padding: 100px;
+}
 
 @media (prefers-color-scheme: dark) {
   html {
@@ -128,12 +132,13 @@ a {
      width: 500px;
      padding-left: 200px;
  }
-.rm-page__header {
+.rm-page__header, H3 {
      font-weight: 300;
      font-size: 52px;
      color: #f26522;
      text-shadow: 0 0 30px #f26522;
  }
+
 .rm-page__text {
      color: rgba(255, 255, 255, 0.7);
      font-size: 16px;

@@ -5,6 +5,9 @@ const nextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
+  pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx']
 }
-
-module.exports = nextConfig
+const withMDX = require('@next/mdx')({
+  extension: /\.(md|mdx)$/,
+})
+module.exports = withMDX(nextConfig)
